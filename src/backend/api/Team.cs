@@ -16,13 +16,13 @@ namespace api
 
         public Team()
         {
-            teamName = "Team Bicep Curls";
+            teamName = "New Jeans Lovers";
 
             teamMembers = new List<TeamMember>();
 
-            teamMembers.Add(new TeamMember("Drake", "Do a lunch and learn"));
-            teamMembers.Add(new TeamMember("Drew", "Sounds good"));
-            teamMembers.Add(new TeamMember("Nasir", "Let me know if you need help"));
+            teamMembers.Add(new TeamMember("Karen", "Beep boop bop bop, ttutturuuuuu"));
+            teamMembers.Add(new TeamMember("Lauren", "BEEEEEEEEES"));
+            teamMembers.Add(new TeamMember("Ryan", "Dr.Pepper is the drink of intellectuals"));
 
         }
 
