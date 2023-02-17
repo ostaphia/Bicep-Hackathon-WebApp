@@ -8,6 +8,9 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: serviceName
   location: location
   kind: 'linux'
+  sku: {
+    name: 'F1'
+  }
   properties: {
     reserved: true
   }
