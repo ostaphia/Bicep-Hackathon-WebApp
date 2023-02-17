@@ -1,17 +1,14 @@
-name: Frontend App Build and Deploy
+name: Deploy Bicep template
 on:
   push:
     branches:
       - main
-    paths:
-      - "src/frontend/**"
   workflow_dispatch: # allows manual execution through GH CLI, API or browser interface
 
 jobs:
   buildFront:
     name: "Build Frontend"
     runs-on: ubuntu-latest
-
 #Checkout
     steps:
       - uses: actions/checkout@v2
@@ -21,12 +18,14 @@ jobs:
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: Deploy
+#Deploy
+      - name: Deploy Bicep template
         uses: azure/arm-deploy@v1
         with:
+          scope: resourcegroup
           subscriptionId: ${{secrets.AZURE_SUBSCRIPTION}}
           resourceGroupName: ${{secrets.AZURE_RG}}
-          template: ../infra/main.bicep
+          template: ./infra/main.bicep
           parameters: 'storagePrefix:cs41003200202a8cc09 storageSKU:Standard_LRS'
           failOnStdErr: false
  
