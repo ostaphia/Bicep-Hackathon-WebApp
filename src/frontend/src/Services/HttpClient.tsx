@@ -1,7 +1,7 @@
 import axios from "axios";
 import { UseEnvironmentVariables } from "./UseEnvironmentVariables";
 
-export const get = async <T,>(
+export const get = async (
   uri: string,
   isSecure: boolean = true,
   isOverrideUrl: boolean = false
