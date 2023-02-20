@@ -22,9 +22,6 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
     location: location
     properties: {
       serverFarmId: appServicePlan.id
-      siteConfig: {
-        ftpsState: 'FtpsOnly'
-      }
       httpsOnly: true
     }
     identity: {
