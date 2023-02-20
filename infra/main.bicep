@@ -24,9 +24,6 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
       serverFarmId: appServicePlan.id
       httpsOnly: false
     }
-    identity: {
-      type: 'SystemAssigned'
-    }
   }
    
   // resource appServiceAPI 'Microsoft.Web/sites@2022-03-01' = {
