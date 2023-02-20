@@ -1,0 +1,36 @@
+name: Deploy Frontend 
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # allows manual execution through GH CLI, API or browser interface
+
+jobs:
+  buildFront:
+    name: "Build Frontend"
+    runs-on: ubuntu-latest
+#Checkout
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+#Set up node
+      - name: Node Setup 
+        uses: actions/setup-node@v1
+        with: 
+          node-version: '10.x'
+      - name: 'npm install, build and test'
+        run: |
+          npm install
+          npm install --global yarn
+          npm run build --if-present
+          npm run test --if-present
+        working-directory: ./src/frontend
+#Deploy
+      - name: Deploy Frontend to Azure WebApp
+        uses: azure/webapps-deploy@v1
+        with:
+          app-name: 'hackerTruong588'
+          publish-profile: ${{secrets.AZURE_PUBLISHPROFILE}}
+          package: ./src/frontend
+ 

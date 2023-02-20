@@ -6,8 +6,8 @@ on:
   workflow_dispatch: # allows manual execution through GH CLI, API or browser interface
 
 jobs:
-  buildFront:
-    name: "Build Frontend"
+  buildBicep:
+    name: "Deploy Bicep"
     runs-on: ubuntu-latest
 #Checkout
     steps:
