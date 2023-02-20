@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths: 
+      - .src/frontend
   workflow_dispatch: # allows manual execution through GH CLI, API or browser interface
 
 jobs:
