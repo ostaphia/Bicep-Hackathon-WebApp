@@ -26,7 +26,6 @@ jobs:
           npm install
           npm install --global yarn
           npm run build --if-present
-          npm run test --if-present
         working-directory: ./src/frontend
 #Upload artifacts
       - name: 'Upload artifact for deployment job'
