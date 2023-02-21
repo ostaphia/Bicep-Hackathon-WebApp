@@ -27,7 +27,7 @@ jobs:
           cd src/backend/api
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -c Release -o "./src/backend/api/bin/Release/net5.0"
+          dotnet publish -c Release -o ./src/backend/api/bin/Release/net5.0
 #Upload artifacts
       - name: 'Upload API artifact'
         uses: actions/upload-artifact@v2
