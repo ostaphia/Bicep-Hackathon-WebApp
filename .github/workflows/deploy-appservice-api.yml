@@ -33,14 +33,14 @@ jobs:
         shell: bash
         run: |
           cd src/backend/api
-          dotnet publish -c Release -o ./src/backend/api/bin/Release/net5.0
+          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myAPI
 
 #Upload artifacts
       - name: 'Upload API artifact'
         uses: actions/upload-artifact@v2
         with:
           name: APIApp
-          path: "./src/backend/api/bin/Release/net5.0"
+          path: ${{env.DOTNET_ROOT}}/myAPI
           if-no-files-found: error
           retention-days: 5
 #Download artifacts
