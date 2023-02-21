@@ -1,3 +1,6 @@
+@description('Specifies the location for resources.')
+param location2 string = 'eastus'
+
 param location string = resourceGroup().location
 //param apiName string = 'HackerAPI'
 param serviceName string = 'myAppServicePlan'
@@ -20,7 +23,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
 
 resource appServicePlanAPI 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: serviceName2
-  location: location
+  location: location2
   kind: 'linux'
   sku: {
     name: 'F1'
@@ -40,7 +43,7 @@ resource appServicePlanAPI 'Microsoft.Web/serverfarms@2022-03-01' = {
 
   resource appServiceAPI 'Microsoft.Web/sites@2022-03-01' = {
     name: apiName
-    location: location
+    location: location2
     properties: {
       serverFarmId: appServicePlanAPI.id
     }
