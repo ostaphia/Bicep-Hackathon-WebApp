@@ -20,7 +20,7 @@ jobs:
           submodules: true
 #Set up .NET core
       - name: Setup .NET Core 
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v1
         with: 
           dotnet-version: ${{ env.DOTNET_VERSION }}
       - name: 'dotnet build'
