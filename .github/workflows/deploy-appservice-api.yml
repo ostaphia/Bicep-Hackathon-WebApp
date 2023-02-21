@@ -37,7 +37,7 @@ jobs:
 
 #Upload artifacts
       - name: 'Upload API artifact'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: APIApp
           path: ${{env.DOTNET_ROOT}}/myAPI
@@ -45,7 +45,7 @@ jobs:
           retention-days: 5
 #Download artifacts
       - name: Download build artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
 #Deploy
       - name: Deploy API to Azure WebApp
         uses: azure/webapps-deploy@v2
