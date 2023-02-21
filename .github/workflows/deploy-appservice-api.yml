@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: APIApp
-          path: "./src/backend/bin/Release/net5.0"
+          path: "./src/backend/api/bin/Release/net5.0"
           if-no-files-found: error
           retention-days: 5
 #Download artifacts
