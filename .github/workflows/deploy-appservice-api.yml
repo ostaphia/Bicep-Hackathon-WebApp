@@ -1,0 +1,46 @@
+name: Deploy Frontend 
+on:
+  push:
+    branches:
+      - main
+    paths: 
+      - .src/backend/api
+  workflow_dispatch: # allows manual execution through GH CLI, API or browser interface
+
+jobs:
+  buildAPI:
+    name: "Build API"
+    runs-on: ubuntu-latest
+#Checkout
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+#Set up .NET core
+      - name: Setup .NET Core 
+        uses: actions/setup-dotnet@v3
+        with: 
+          dotnet-version: '5.0.x'
+      - name: 'dotnet build and publish'
+        run: |
+          dotnet restore
+          dotnet build --configuration Release
+#Upload artifacts
+      - name: 'Upload API artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: APIApp
+          path: "./src/backend/bin/Release/net5.0"
+          if-no-files-found: error
+          retention-days: 5
+#Download artifacts
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+#Deploy
+      - name: Deploy Frontend to Azure WebApp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'hackerTruongAPI'
+          publish-profile: ${{secrets.AZURE_API_PUBLISHPROFILE}}
+          package: ./APIApp
+ 
