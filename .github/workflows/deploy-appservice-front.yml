@@ -42,7 +42,7 @@ jobs:
           name: node-app
 #Deploy
       - name: Deploy Frontend to Azure WebApp
-        uses: azure/webapps-deploy@v1
+        uses: azure/webapps-deploy@v2
         with:
           app-name: 'hackerTruong588'
           publish-profile: ${{secrets.AZURE_PUBLISHPROFILE}}
