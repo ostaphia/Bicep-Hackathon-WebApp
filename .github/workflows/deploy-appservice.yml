@@ -27,6 +27,6 @@ jobs:
           resourceGroupName: ${{secrets.AZURE_RG}}
           template: ./infra/main.bicep
           failOnStdErr: false
-      - name: logout 
+      - name: logout
         run: |
           az logout
