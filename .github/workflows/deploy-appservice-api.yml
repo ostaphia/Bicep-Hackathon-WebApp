@@ -5,8 +5,6 @@ on:
   push:
     branches:
       - main
-    paths: 
-      - .src/backend/api
   workflow_dispatch: # allows manual execution through GH CLI, API or browser interface
 
 jobs:
@@ -24,13 +22,13 @@ jobs:
       - name: 'dotnet build'  
         shell: bash
         run: |
-          cd src/backend/api/
+          cd src/backend/api
           dotnet restore
           dotnet build --configuration Release
       - name: 'dotnet publish'
         shell: bash
         run: |
-          cd src/backend/api/
+          cd src/backend/api
           dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myAPI
 
 #Upload artifacts
