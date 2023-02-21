@@ -16,8 +16,6 @@ jobs:
 #Checkout
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: true
 #Set up .NET core
       - name: Setup .NET Core 
         uses: actions/setup-dotnet@v1
@@ -37,7 +35,7 @@ jobs:
 
 #Upload artifacts
       - name: 'Upload API artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: APIApp
           path: ${{env.DOTNET_ROOT}}/myAPI
@@ -45,7 +43,7 @@ jobs:
           retention-days: 5
 #Download artifacts
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
 #Deploy
       - name: Deploy API to Azure WebApp
         uses: azure/webapps-deploy@v2
