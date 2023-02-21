@@ -1,4 +1,4 @@
-name: Deploy Frontend 
+name: Deploy API 
 on:
   push:
     branches:
@@ -22,7 +22,9 @@ jobs:
         with: 
           dotnet-version: '5.0.x'
       - name: 'dotnet build and publish'
+        shell: bash
         run: |
+          cd src/backend/api
           dotnet restore
           dotnet build --configuration Release
 #Upload artifacts
