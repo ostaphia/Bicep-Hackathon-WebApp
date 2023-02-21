@@ -42,11 +42,15 @@ jobs:
 #Download artifacts
       - name: Download build artifacts
         uses: actions/download-artifact@v2
+#Log into azure
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 #Deploy
       - name: Deploy API to Azure WebApp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'hackerTruongAPI'
-          publish-profile: ${{secrets.AZURE_API_PUBLISHPROFILE}}
           package: ./APIApp
+
  
