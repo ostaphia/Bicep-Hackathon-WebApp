@@ -27,6 +27,7 @@ jobs:
           cd src/backend/api
           dotnet restore
           dotnet build --configuration Release
+          dotnet publish --configuration Release --output "./src/backend/api/bin/Release/net5.0"
 #Upload artifacts
       - name: 'Upload API artifact'
         uses: actions/upload-artifact@v2
@@ -39,7 +40,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v2
 #Deploy
-      - name: Deploy Frontend to Azure WebApp
+      - name: Deploy API to Azure WebApp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'hackerTruongAPI'
