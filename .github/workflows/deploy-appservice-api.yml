@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 #Checkout
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
 #Set up .NET core
       - name: Setup .NET Core 
         uses: actions/setup-dotnet@v1
@@ -38,7 +38,7 @@ jobs:
           name: APIApp
           path: ${{env.DOTNET_ROOT}}/myAPI
           if-no-files-found: error
-          retention-days: 5
+          retention-days: 30
 #Download artifacts
       - name: Download build artifacts
         uses: actions/download-artifact@v2
