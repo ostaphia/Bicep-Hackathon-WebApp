@@ -11,9 +11,11 @@ jobs:
   buildAPI:
     name: "Build API"
     runs-on: ubuntu-latest
+    
 #Checkout
     steps:
       - uses: actions/checkout@main
+
 #Set up .NET core
       - name: Setup .NET Core 
         uses: actions/setup-dotnet@v1
@@ -39,14 +41,16 @@ jobs:
           path: ${{env.DOTNET_ROOT}}/myAPI
           if-no-files-found: error
           retention-days: 30
+
 #Download artifacts
   deployAPI: 
-    name: deploy
+    name: Deploy API
     runs-on: ubuntu-latest
     needs: buildAPI 
     steps:
     - name: Download build artifacts
       uses: actions/download-artifact@v2
+
 #Log into azure
     - uses: azure/login@v1
       with:
