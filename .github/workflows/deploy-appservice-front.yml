@@ -42,7 +42,7 @@ jobs:
       - name: Deploy Frontend to Azure WebApp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'hackerTruong588'
+          app-name: 'hackathon-truongsahay-app'
           publish-profile: ${{secrets.AZURE_PUBLISHPROFILE}}
           package: ./FrontendApp
  
