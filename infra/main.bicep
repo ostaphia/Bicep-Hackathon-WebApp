@@ -7,7 +7,7 @@ param appName string = 'hackathon-truongsahay-app'
 param apiName string = 'hackathon-truongsahay-api'
 
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   name: serviceName
   location: location
   kind: 'linux'
@@ -19,7 +19,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   }
 }
 
-  resource appServiceFront 'Microsoft.Web/sites@2022-03-01' = {
+  resource appServiceFront 'Microsoft.Web/sites@2020-06-01' = {
     name: appName
     location: location
     properties: {
@@ -27,7 +27,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
     }
   }
 
-  resource appServicePlanAPI 'Microsoft.Web/serverfarms@2022-03-01' = {
+  resource appServicePlanAPI 'Microsoft.Web/serverfarms@2020-06-01' = {
     name: serviceNameAPI
     location: location
     kind: 'linux'
@@ -40,7 +40,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   }
     
 
-  resource appServiceAPI 'Microsoft.Web/sites@2022-03-01' = {
+  resource appServiceAPI 'Microsoft.Web/sites@2020-06-01' = {
     name: apiName
     location: location
     properties: {
