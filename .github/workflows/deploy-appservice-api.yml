@@ -58,7 +58,7 @@ jobs:
     - name: Deploy API to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'hackathon-truongsahay-api'
+        app-name: apiName
         package: ./APIApp
 
  
