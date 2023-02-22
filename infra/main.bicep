@@ -14,9 +14,6 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   sku: {
     name: 'F1'
   }
-  properties: {
-    reserved: true
-  }
 }
 
   resource appServiceFront 'Microsoft.Web/sites@2020-06-01' = {
@@ -33,9 +30,6 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
     kind: 'linux'
     sku: {
       name: 'F1'
-    }
-    properties: {
-      reserved: true
     }
   }
     
