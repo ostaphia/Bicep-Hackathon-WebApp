@@ -9,7 +9,7 @@ param apiName string = 'hackathon-truongsahay-api'
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   name: serviceName
-  location: location
+  location: 'eastus'
   kind: 'linux'
   sku: {
     name: 'F1'
@@ -21,7 +21,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
 
   resource appServiceFront 'Microsoft.Web/sites@2020-06-01' = {
     name: appName
-    location: location
+    location: 'eastus'
     properties: {
       serverFarmId: appServicePlan.id
     }
