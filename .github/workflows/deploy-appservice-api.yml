@@ -39,10 +39,7 @@ jobs:
           path: ${{env.DOTNET_ROOT}}/myAPI
           if-no-files-found: error
           retention-days: 30
-#Log into azure
-      - uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
 
 #Download artifacts
   deployAPI: 
@@ -50,6 +47,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: buildAPI 
     steps:
+    #Log into azure
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Download build artifacts
       uses: actions/download-artifact@v2
 
