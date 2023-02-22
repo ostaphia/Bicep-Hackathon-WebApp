@@ -22,13 +22,11 @@ jobs:
         with: 
           dotnet-version: ${{ env.DOTNET_VERSION }}
       - name: 'dotnet build'  
-        shell: bash
         run: |
           cd src/backend/api
           dotnet restore
           dotnet build --configuration Release
       - name: 'dotnet publish'
-        shell: bash
         run: |
           cd src/backend/api
           dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myAPI
@@ -41,6 +39,10 @@ jobs:
           path: ${{env.DOTNET_ROOT}}/myAPI
           if-no-files-found: error
           retention-days: 30
+#Log into azure
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
 #Download artifacts
   deployAPI: 
@@ -51,10 +53,6 @@ jobs:
     - name: Download build artifacts
       uses: actions/download-artifact@v2
 
-#Log into azure
-    - uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
 #Deploy
     - name: Deploy API to Azure WebApp
       uses: azure/webapps-deploy@v2
